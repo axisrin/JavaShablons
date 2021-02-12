@@ -1,2 +1,3 @@
-# JavaShablons
-This is my path with homework by java templates
+Название работ соответствует названиям папок и файлов.
+
+"Практика х" , где х обозначает номер парктики.
