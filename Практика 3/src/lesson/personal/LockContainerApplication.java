@@ -17,7 +17,7 @@ public class LockContainerApplication extends LockContainerSet implements Runnab
     public void run() {
         Set<String> names = lockContainerSet;
         try {
-            if (this.lock.tryLock(10, TimeUnit.MILLISECONDS)) {
+            if (this.lock.tryLock(10000, TimeUnit.MILLISECONDS)) {
 
                 System.out.println("Thread has been Started and Locked");
 

@@ -13,10 +13,11 @@ public class Main {
 
     public static void main(String[] args) {
 
-        LockContainerApplication lCApp = new LockContainerApplication();
+        //LockContainerApplication lCApp = new LockContainerApplication();
+        SemaphoreContainerApplication sCApp = new SemaphoreContainerApplication(null);
 
-        Thread t1 = new Thread(lCApp);
-        Thread t2 = new Thread(lCApp);
+        Thread t1 = new Thread(sCApp);
+        Thread t2 = new Thread(sCApp);
 
 
         t1.start();
