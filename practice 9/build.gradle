@@ -1,0 +1,57 @@
+plugins {
+    id 'java'
+}
+
+group 'ua.greeting'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+}
+
+task greeting {
+    doLast {
+        println("Hello this is AXI!")
+    }
+}
+
+jar {
+    manifest {
+        attributes "Main-Class": "ua.greeting.GreetUA"
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    finalizedBy{
+        copyJar
+    }
+}
+
+task copyJar(type: Copy){
+    from jar
+    into projectDir
+    finalizedBy {
+        buildDockerImage
+    }
+}
+
+task buildDockerImage(type: Exec) {
+    workingDir projectDir
+    commandLine "docker", "build", "-t", "project9:${project.version}", "."
+    finalizedBy {
+        runDockerContainer
+    }
+}
+
+task runDockerContainer(type: Exec) {
+    commandLine "docker", "run", "project9:${project.version}"
+}
+
+test {
+    useJUnitPlatform()
+}
