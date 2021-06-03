@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class AppController {
     private static final String appMessage = "Hi! You are in app! ";
 
-    @RequestMapping("/app")
+    @RequestMapping("/")
     public String appGreeting(@RequestParam(value="appWord", required = false, defaultValue = "Stranger!")
                                           String appWord) {
         return appMessage + appWord;

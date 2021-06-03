@@ -1,0 +1,3 @@
+id|name|creationDate|price
+4|Alexis|2005-09-21 00:00:00.0|Pro
+10|Stas|2001-09-21 00:00:00.0|Prosto
